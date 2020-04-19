@@ -5,11 +5,11 @@ process.env.PORT = process.env.PORT || 8080
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
 
 // Database
-let urlBD
+let mongoDBURI
 
 if (process.env.NODE_ENV === 'dev') {
-    urlBD = 'mongodb://localhost:27017/coffee'
+    mongoDBURI = 'mongodb://localhost:27017/coffee'
 } else {
-    urlBD = 'mongodb+srv://admin:xAkxQnrYJLfR6afo@cluster0-yynrr.mongodb.net/coffee'
+    mongoDBURI = process.env.MONGO_DB_URI
 }
-process.env.URL_DB = urlBD
+process.env.URL_DB = mongoDBURI
