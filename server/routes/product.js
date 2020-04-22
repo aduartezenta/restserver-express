@@ -10,8 +10,10 @@ const Category = require('../models/category')
 app.get('/product', verifyToken, (req, res) => {
     let from = Number(req.query.from) || 0
     let limit = Number(req.query.limit) || 5
-
-    Product.find({ available: true })
+    let condition = {
+        available: true
+    }
+    Product.find(condition)
         .populate('user', 'firstName')
         .populate('category', 'description')
         .skip(from)
@@ -32,7 +34,7 @@ app.get('/product', verifyToken, (req, res) => {
                 })
             }
 
-            let count = await Product.count()
+            let count = await Product.count(condition)
             res.json({
                 ok: true,
                 count,
