@@ -5,11 +5,7 @@ process.env.PORT = process.env.PORT || 8080
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
 
 // Token expiration time
-// 60 seconds
-// 60 minutes
-// 24 hours
-// 30 days
-process.env.TOKEN_EXP_TIME = 60 * 60 * 24 * 30
+process.env.TOKEN_EXP_TIME = '48h'
 
 // Authentication Seed
 process.env.AUTH_SEED = process.env.AUTH_SEED || 'auth-seed-dev'
