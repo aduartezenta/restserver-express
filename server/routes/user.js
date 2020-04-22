@@ -77,29 +77,6 @@ app.put('/user/:id', [verifyToken, verifyAdminRole], function(req, res) {
 app.delete('/user/:id', [verifyToken, verifyAdminRole], function(req, res) {
     let id = req.params.id
 
-    // User.findByIdAndRemove(id, (err, userDB) => {
-    //     if (err) {
-    //         return res.status(400).json({
-    //             ok: false,
-    //             err
-    //         })
-    //     }
-
-    //     if (!userDB) {
-    //         return res.status(400).json({
-    //             ok: false,
-    //             err: {
-    //                 message: 'User not found'
-    //             }
-    //         })
-    //     }
-
-    //     res.json({
-    //         ok: true,
-    //         user: userDB
-    //     })
-    // })
-
     let changesStatus = {
         status: false
     }
