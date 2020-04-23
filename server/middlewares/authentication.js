@@ -18,6 +18,24 @@ let verifyToken = (req, res, next) => {
     })
 }
 
+// Verify image token
+let verifyImgToken = (req, res, next) => {
+    let token = req.query.token
+
+    jwt.verify(token, process.env.AUTH_SEED, (err, decoded) => {
+        if (err) {
+            return res.status(401).json({
+                ok: false,
+                err: {
+                    message: 'Invalid token'
+                }
+            })
+        }
+        req.user = decoded.user
+        next()
+    })
+}
+
 // Verify admin role
 let verifyAdminRole = (req, res, next) => {
     let role = req.user.role
@@ -35,5 +53,6 @@ let verifyAdminRole = (req, res, next) => {
 
 module.exports = {
     verifyToken,
+    verifyImgToken,
     verifyAdminRole
 }
